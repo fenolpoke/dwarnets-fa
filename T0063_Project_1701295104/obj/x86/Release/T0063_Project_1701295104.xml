@@ -1,0 +1,240 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+T0063_Project_1701295104
+</name>
+</assembly>
+<members>
+<member name="M:LoadingForm.dWarneTSDatabaseEntities1.#ctor">
+	<summary>
+ Initializes a new dWarneTSDatabaseEntities1 object using the connection string found in the 'dWarneTSDatabaseEntities1' section of the application configuration file.
+ </summary>
+</member><member name="M:LoadingForm.dWarneTSDatabaseEntities1.#ctor(System.String)">
+	<summary>
+ Initialize a new dWarneTSDatabaseEntities1 object.
+ </summary>
+</member><member name="M:LoadingForm.dWarneTSDatabaseEntities1.#ctor(System.Data.EntityClient.EntityConnection)">
+	<summary>
+ Initialize a new dWarneTSDatabaseEntities1 object.
+ </summary>
+</member><member name="P:LoadingForm.dWarneTSDatabaseEntities1.HeaderTransactions">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.dWarneTSDatabaseEntities1.MsComputers">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.dWarneTSDatabaseEntities1.MsPayments">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.dWarneTSDatabaseEntities1.MsUsers">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LoadingForm.dWarneTSDatabaseEntities1.AddToHeaderTransactions(LoadingForm.HeaderTransaction)">
+	<summary>
+ Deprecated Method for adding a new object to the HeaderTransactions EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+ </summary>
+</member><member name="M:LoadingForm.dWarneTSDatabaseEntities1.AddToMsComputers(LoadingForm.MsComputer)">
+	<summary>
+ Deprecated Method for adding a new object to the MsComputers EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+ </summary>
+</member><member name="M:LoadingForm.dWarneTSDatabaseEntities1.AddToMsPayments(LoadingForm.MsPayment)">
+	<summary>
+ Deprecated Method for adding a new object to the MsPayments EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+ </summary>
+</member><member name="M:LoadingForm.dWarneTSDatabaseEntities1.AddToMsUsers(LoadingForm.MsUser)">
+	<summary>
+ Deprecated Method for adding a new object to the MsUsers EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+ </summary>
+</member><member name="T:LoadingForm.dWarneTSDatabaseEntities1">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LoadingForm.HeaderTransaction.CreateHeaderTransaction(System.String,System.String,System.String,System.DateTime,System.DateTime)">
+	<summary>
+ Create a new HeaderTransaction object.
+ </summary>
+	<param name="transactionid">Initial value of the Transactionid property.</param>
+	<param name="userid">Initial value of the Userid property.</param>
+	<param name="paymentid">Initial value of the Paymentid property.</param>
+	<param name="bookingdate">Initial value of the Bookingdate property.</param>
+	<param name="transactiondate">Initial value of the Transactiondate property.</param>
+</member><member name="P:LoadingForm.HeaderTransaction.Transactionid">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.Userid">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.Paymentid">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.Bookingdate">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.Transactiondate">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.MsPayment">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.MsPaymentReference">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.MsUser">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.MsUserReference">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.HeaderTransaction.MsComputers">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:LoadingForm.HeaderTransaction">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LoadingForm.MsComputer.CreateMsComputer(System.String,System.String,System.String,System.String)">
+	<summary>
+ Create a new MsComputer object.
+ </summary>
+	<param name="computerid">Initial value of the Computerid property.</param>
+	<param name="rowCol">Initial value of the RowCol property.</param>
+	<param name="status">Initial value of the Status property.</param>
+	<param name="reason">Initial value of the Reason property.</param>
+</member><member name="P:LoadingForm.MsComputer.Computerid">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsComputer.RowCol">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsComputer.Status">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsComputer.Reason">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsComputer.HeaderTransactions">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:LoadingForm.MsComputer">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LoadingForm.MsPayment.CreateMsPayment(System.String,System.String,System.String)">
+	<summary>
+ Create a new MsPayment object.
+ </summary>
+	<param name="paymentid">Initial value of the Paymentid property.</param>
+	<param name="method">Initial value of the Method property.</param>
+	<param name="accountnumber">Initial value of the Accountnumber property.</param>
+</member><member name="P:LoadingForm.MsPayment.Paymentid">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsPayment.Method">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsPayment.Accountnumber">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsPayment.HeaderTransactions">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:LoadingForm.MsPayment">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:LoadingForm.MsUser.CreateMsUser(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.DateTime)">
+	<summary>
+ Create a new MsUser object.
+ </summary>
+	<param name="userid">Initial value of the Userid property.</param>
+	<param name="name">Initial value of the Name property.</param>
+	<param name="password">Initial value of the Password property.</param>
+	<param name="gender">Initial value of the Gender property.</param>
+	<param name="creditCardNumber">Initial value of the CreditCardNumber property.</param>
+	<param name="bankName">Initial value of the BankName property.</param>
+	<param name="bankAccNumber">Initial value of the BankAccNumber property.</param>
+	<param name="lastUpdate">Initial value of the LastUpdate property.</param>
+</member><member name="P:LoadingForm.MsUser.Userid">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.Name">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.Password">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.Gender">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.CreditCardNumber">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.BankName">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.BankAccNumber">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.LastUpdate">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:LoadingForm.MsUser.HeaderTransactions">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:LoadingForm.MsUser">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:LoadingForm.dWarneTSDatabaseDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="P:LoadingForm.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:LoadingForm.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:LoadingForm.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

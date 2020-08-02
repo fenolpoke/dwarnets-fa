@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dWarneTSDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="dWarneTSDatabaseModelStoreContainer">
+          <EntitySet Name="DetailTransaction" EntityType="dWarneTSDatabaseModel.Store.DetailTransaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HeaderTransaction" EntityType="dWarneTSDatabaseModel.Store.HeaderTransaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MsComputer" EntityType="dWarneTSDatabaseModel.Store.MsComputer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MsPayment" EntityType="dWarneTSDatabaseModel.Store.MsPayment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MsUser" EntityType="dWarneTSDatabaseModel.Store.MsUser" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_DetailTransaction_HeaderTransaction" Association="dWarneTSDatabaseModel.Store.FK_DetailTransaction_HeaderTransaction">
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+            <End Role="DetailTransaction" EntitySet="DetailTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailTransaction_MsComputer" Association="dWarneTSDatabaseModel.Store.FK_DetailTransaction_MsComputer">
+            <End Role="MsComputer" EntitySet="MsComputer" />
+            <End Role="DetailTransaction" EntitySet="DetailTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HeaderTransaction_MsPayment" Association="dWarneTSDatabaseModel.Store.FK_HeaderTransaction_MsPayment">
+            <End Role="MsPayment" EntitySet="MsPayment" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HeaderTransaction_MsUser" Association="dWarneTSDatabaseModel.Store.FK_HeaderTransaction_MsUser">
+            <End Role="MsUser" EntitySet="MsUser" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DetailTransaction">
+          <Key>
+            <PropertyRef Name="Transactionid" />
+            <PropertyRef Name="Computerid" />
+          </Key>
+          <Property Name="Transactionid" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="Computerid" Type="nchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="HeaderTransaction">
+          <Key>
+            <PropertyRef Name="Transactionid" />
+          </Key>
+          <Property Name="Transactionid" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="Userid" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="Paymentid" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="Bookingdate" Type="datetime" Nullable="false" />
+          <Property Name="Transactiondate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MsComputer">
+          <Key>
+            <PropertyRef Name="Computerid" />
+          </Key>
+          <Property Name="Computerid" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="RowCol" Type="nvarchar" Nullable="false" MaxLength="6" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Reason" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MsPayment">
+          <Key>
+            <PropertyRef Name="Paymentid" />
+          </Key>
+          <Property Name="Paymentid" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="Method" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Accountnumber" Type="nchar" Nullable="false" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="MsUser">
+          <Key>
+            <PropertyRef Name="Userid" />
+          </Key>
+          <Property Name="Userid" Type="nchar" Nullable="false" MaxLength="6" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="8" />
+          <Property Name="CreditCardNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BankName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BankAccNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DetailTransaction_HeaderTransaction">
+          <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.Store.HeaderTransaction" Multiplicity="1" />
+          <End Role="DetailTransaction" Type="dWarneTSDatabaseModel.Store.DetailTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTransaction">
+              <PropertyRef Name="Transactionid" />
+            </Principal>
+            <Dependent Role="DetailTransaction">
+              <PropertyRef Name="Transactionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailTransaction_MsComputer">
+          <End Role="MsComputer" Type="dWarneTSDatabaseModel.Store.MsComputer" Multiplicity="1" />
+          <End Role="DetailTransaction" Type="dWarneTSDatabaseModel.Store.DetailTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsComputer">
+              <PropertyRef Name="Computerid" />
+            </Principal>
+            <Dependent Role="DetailTransaction">
+              <PropertyRef Name="Computerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HeaderTransaction_MsPayment">
+          <End Role="MsPayment" Type="dWarneTSDatabaseModel.Store.MsPayment" Multiplicity="1" />
+          <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.Store.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsPayment">
+              <PropertyRef Name="Paymentid" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="Paymentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HeaderTransaction_MsUser">
+          <End Role="MsUser" Type="dWarneTSDatabaseModel.Store.MsUser" Multiplicity="1" />
+          <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.Store.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsUser">
+              <PropertyRef Name="Userid" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dWarneTSDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="dWarneTSDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HeaderTransactions" EntityType="dWarneTSDatabaseModel.HeaderTransaction" />
+          <EntitySet Name="MsComputers" EntityType="dWarneTSDatabaseModel.MsComputer" />
+          <EntitySet Name="MsPayments" EntityType="dWarneTSDatabaseModel.MsPayment" />
+          <EntitySet Name="MsUsers" EntityType="dWarneTSDatabaseModel.MsUser" />
+          <AssociationSet Name="FK_HeaderTransaction_MsPayment" Association="dWarneTSDatabaseModel.FK_HeaderTransaction_MsPayment">
+            <End Role="MsPayment" EntitySet="MsPayments" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HeaderTransaction_MsUser" Association="dWarneTSDatabaseModel.FK_HeaderTransaction_MsUser">
+            <End Role="MsUser" EntitySet="MsUsers" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="DetailTransaction" Association="dWarneTSDatabaseModel.DetailTransaction">
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+            <End Role="MsComputer" EntitySet="MsComputers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="HeaderTransaction">
+          <Key>
+            <PropertyRef Name="Transactionid" />
+          </Key>
+          <Property Name="Transactionid" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="Userid" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="Paymentid" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="Bookingdate" Type="DateTime" Nullable="false" />
+          <Property Name="Transactiondate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="MsPayment" Relationship="dWarneTSDatabaseModel.FK_HeaderTransaction_MsPayment" FromRole="HeaderTransaction" ToRole="MsPayment" />
+          <NavigationProperty Name="MsUser" Relationship="dWarneTSDatabaseModel.FK_HeaderTransaction_MsUser" FromRole="HeaderTransaction" ToRole="MsUser" />
+          <NavigationProperty Name="MsComputers" Relationship="dWarneTSDatabaseModel.DetailTransaction" FromRole="HeaderTransaction" ToRole="MsComputer" />
+        </EntityType>
+        <EntityType Name="MsComputer">
+          <Key>
+            <PropertyRef Name="Computerid" />
+          </Key>
+          <Property Name="Computerid" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="RowCol" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="dWarneTSDatabaseModel.DetailTransaction" FromRole="MsComputer" ToRole="HeaderTransaction" />
+        </EntityType>
+        <EntityType Name="MsPayment">
+          <Key>
+            <PropertyRef Name="Paymentid" />
+          </Key>
+          <Property Name="Paymentid" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="Method" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Accountnumber" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="dWarneTSDatabaseModel.FK_HeaderTransaction_MsPayment" FromRole="MsPayment" ToRole="HeaderTransaction" />
+        </EntityType>
+        <EntityType Name="MsUser">
+          <Key>
+            <PropertyRef Name="Userid" />
+          </Key>
+          <Property Name="Userid" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="CreditCardNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="BankName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="BankAccNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="dWarneTSDatabaseModel.FK_HeaderTransaction_MsUser" FromRole="MsUser" ToRole="HeaderTransaction" />
+        </EntityType>
+        <Association Name="FK_HeaderTransaction_MsPayment">
+          <End Role="MsPayment" Type="dWarneTSDatabaseModel.MsPayment" Multiplicity="1" />
+          <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsPayment">
+              <PropertyRef Name="Paymentid" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="Paymentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HeaderTransaction_MsUser">
+          <End Role="MsUser" Type="dWarneTSDatabaseModel.MsUser" Multiplicity="1" />
+          <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsUser">
+              <PropertyRef Name="Userid" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DetailTransaction">
+          <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.HeaderTransaction" Multiplicity="*" />
+          <End Role="MsComputer" Type="dWarneTSDatabaseModel.MsComputer" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dWarneTSDatabaseModelStoreContainer" CdmEntityContainer="dWarneTSDatabaseEntities1">
+          <EntitySetMapping Name="HeaderTransactions">
+            <EntityTypeMapping TypeName="dWarneTSDatabaseModel.HeaderTransaction">
+              <MappingFragment StoreEntitySet="HeaderTransaction">
+                <ScalarProperty Name="Transactionid" ColumnName="Transactionid" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Paymentid" ColumnName="Paymentid" />
+                <ScalarProperty Name="Bookingdate" ColumnName="Bookingdate" />
+                <ScalarProperty Name="Transactiondate" ColumnName="Transactiondate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MsComputers">
+            <EntityTypeMapping TypeName="dWarneTSDatabaseModel.MsComputer">
+              <MappingFragment StoreEntitySet="MsComputer">
+                <ScalarProperty Name="Computerid" ColumnName="Computerid" />
+                <ScalarProperty Name="RowCol" ColumnName="RowCol" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MsPayments">
+            <EntityTypeMapping TypeName="dWarneTSDatabaseModel.MsPayment">
+              <MappingFragment StoreEntitySet="MsPayment">
+                <ScalarProperty Name="Paymentid" ColumnName="Paymentid" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="Accountnumber" ColumnName="Accountnumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MsUsers">
+            <EntityTypeMapping TypeName="dWarneTSDatabaseModel.MsUser">
+              <MappingFragment StoreEntitySet="MsUser">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankAccNumber" ColumnName="BankAccNumber" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DetailTransaction" TypeName="dWarneTSDatabaseModel.DetailTransaction" StoreEntitySet="DetailTransaction">
+            <EndProperty Name="HeaderTransaction">
+              <ScalarProperty Name="Transactionid" ColumnName="Transactionid" />
+            </EndProperty>
+            <EndProperty Name="MsComputer">
+              <ScalarProperty Name="Computerid" ColumnName="Computerid" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="dWarneTSModel">
+        <EntityTypeShape EntityType="dWarneTSDatabaseModel.HeaderTransaction" Width="1.5" PointX="3" PointY="0.875" Height="2.2496956380208326" IsExpanded="true" />
+        <EntityTypeShape EntityType="dWarneTSDatabaseModel.MsComputer" Width="1.5" PointX="5.25" PointY="1.125" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="dWarneTSDatabaseModel.MsPayment" Width="1.5" PointX="0.75" PointY="1.25" Height="1.5923063151041665" IsExpanded="true" />
+        <EntityTypeShape EntityType="dWarneTSDatabaseModel.MsUser" Width="1.5" PointX="0.75" PointY="4.875" Height="2.4140429687499996" IsExpanded="true" />
+        <AssociationConnector Association="dWarneTSDatabaseModel.FK_HeaderTransaction_MsPayment" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.0461531575520833" />
+          <ConnectorPoint PointX="3" PointY="2.0461531575520833" />
+        </AssociationConnector>
+        <AssociationConnector Association="dWarneTSDatabaseModel.FK_HeaderTransaction_MsUser" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.082021484375" />
+          <ConnectorPoint PointX="3.75" PointY="6.082021484375" />
+          <ConnectorPoint PointX="3.75" PointY="3.1246956380208326" />
+        </AssociationConnector>
+        <AssociationConnector Association="dWarneTSDatabaseModel.DetailTransaction" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.0033268229166667" />
+          <ConnectorPoint PointX="5.25" PointY="2.0033268229166667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

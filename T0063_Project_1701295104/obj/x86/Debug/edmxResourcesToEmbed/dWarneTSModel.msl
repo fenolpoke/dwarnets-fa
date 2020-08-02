@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dWarneTSDatabaseModelStoreContainer" CdmEntityContainer="dWarneTSDatabaseEntities1">
+    <EntitySetMapping Name="HeaderTransactions">
+      <EntityTypeMapping TypeName="dWarneTSDatabaseModel.HeaderTransaction">
+        <MappingFragment StoreEntitySet="HeaderTransaction">
+          <ScalarProperty Name="Transactionid" ColumnName="Transactionid" />
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Paymentid" ColumnName="Paymentid" />
+          <ScalarProperty Name="Bookingdate" ColumnName="Bookingdate" />
+          <ScalarProperty Name="Transactiondate" ColumnName="Transactiondate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MsComputers">
+      <EntityTypeMapping TypeName="dWarneTSDatabaseModel.MsComputer">
+        <MappingFragment StoreEntitySet="MsComputer">
+          <ScalarProperty Name="Computerid" ColumnName="Computerid" />
+          <ScalarProperty Name="RowCol" ColumnName="RowCol" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MsPayments">
+      <EntityTypeMapping TypeName="dWarneTSDatabaseModel.MsPayment">
+        <MappingFragment StoreEntitySet="MsPayment">
+          <ScalarProperty Name="Paymentid" ColumnName="Paymentid" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="Accountnumber" ColumnName="Accountnumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MsUsers">
+      <EntityTypeMapping TypeName="dWarneTSDatabaseModel.MsUser">
+        <MappingFragment StoreEntitySet="MsUser">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankAccNumber" ColumnName="BankAccNumber" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DetailTransaction" TypeName="dWarneTSDatabaseModel.DetailTransaction" StoreEntitySet="DetailTransaction">
+      <EndProperty Name="HeaderTransaction">
+        <ScalarProperty Name="Transactionid" ColumnName="Transactionid" />
+      </EndProperty>
+      <EndProperty Name="MsComputer">
+        <ScalarProperty Name="Computerid" ColumnName="Computerid" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

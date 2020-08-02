@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dWarneTSDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="dWarneTSDatabaseModelStoreContainer">
+    <EntitySet Name="DetailTransaction" EntityType="dWarneTSDatabaseModel.Store.DetailTransaction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HeaderTransaction" EntityType="dWarneTSDatabaseModel.Store.HeaderTransaction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MsComputer" EntityType="dWarneTSDatabaseModel.Store.MsComputer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MsPayment" EntityType="dWarneTSDatabaseModel.Store.MsPayment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MsUser" EntityType="dWarneTSDatabaseModel.Store.MsUser" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_DetailTransaction_HeaderTransaction" Association="dWarneTSDatabaseModel.Store.FK_DetailTransaction_HeaderTransaction">
+      <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+      <End Role="DetailTransaction" EntitySet="DetailTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailTransaction_MsComputer" Association="dWarneTSDatabaseModel.Store.FK_DetailTransaction_MsComputer">
+      <End Role="MsComputer" EntitySet="MsComputer" />
+      <End Role="DetailTransaction" EntitySet="DetailTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HeaderTransaction_MsPayment" Association="dWarneTSDatabaseModel.Store.FK_HeaderTransaction_MsPayment">
+      <End Role="MsPayment" EntitySet="MsPayment" />
+      <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HeaderTransaction_MsUser" Association="dWarneTSDatabaseModel.Store.FK_HeaderTransaction_MsUser">
+      <End Role="MsUser" EntitySet="MsUser" />
+      <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DetailTransaction">
+    <Key>
+      <PropertyRef Name="Transactionid" />
+      <PropertyRef Name="Computerid" />
+    </Key>
+    <Property Name="Transactionid" Type="nchar" Nullable="false" MaxLength="6" />
+    <Property Name="Computerid" Type="nchar" Nullable="false" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="HeaderTransaction">
+    <Key>
+      <PropertyRef Name="Transactionid" />
+    </Key>
+    <Property Name="Transactionid" Type="nchar" Nullable="false" MaxLength="6" />
+    <Property Name="Userid" Type="nchar" Nullable="false" MaxLength="6" />
+    <Property Name="Paymentid" Type="nchar" Nullable="false" MaxLength="6" />
+    <Property Name="Bookingdate" Type="datetime" Nullable="false" />
+    <Property Name="Transactiondate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MsComputer">
+    <Key>
+      <PropertyRef Name="Computerid" />
+    </Key>
+    <Property Name="Computerid" Type="nchar" Nullable="false" MaxLength="6" />
+    <Property Name="RowCol" Type="nvarchar" Nullable="false" MaxLength="6" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Reason" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MsPayment">
+    <Key>
+      <PropertyRef Name="Paymentid" />
+    </Key>
+    <Property Name="Paymentid" Type="nchar" Nullable="false" MaxLength="6" />
+    <Property Name="Method" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Accountnumber" Type="nchar" Nullable="false" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="MsUser">
+    <Key>
+      <PropertyRef Name="Userid" />
+    </Key>
+    <Property Name="Userid" Type="nchar" Nullable="false" MaxLength="6" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="CreditCardNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="BankName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="BankAccNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DetailTransaction_HeaderTransaction">
+    <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.Store.HeaderTransaction" Multiplicity="1" />
+    <End Role="DetailTransaction" Type="dWarneTSDatabaseModel.Store.DetailTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeaderTransaction">
+        <PropertyRef Name="Transactionid" />
+      </Principal>
+      <Dependent Role="DetailTransaction">
+        <PropertyRef Name="Transactionid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailTransaction_MsComputer">
+    <End Role="MsComputer" Type="dWarneTSDatabaseModel.Store.MsComputer" Multiplicity="1" />
+    <End Role="DetailTransaction" Type="dWarneTSDatabaseModel.Store.DetailTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsComputer">
+        <PropertyRef Name="Computerid" />
+      </Principal>
+      <Dependent Role="DetailTransaction">
+        <PropertyRef Name="Computerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HeaderTransaction_MsPayment">
+    <End Role="MsPayment" Type="dWarneTSDatabaseModel.Store.MsPayment" Multiplicity="1" />
+    <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.Store.HeaderTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsPayment">
+        <PropertyRef Name="Paymentid" />
+      </Principal>
+      <Dependent Role="HeaderTransaction">
+        <PropertyRef Name="Paymentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HeaderTransaction_MsUser">
+    <End Role="MsUser" Type="dWarneTSDatabaseModel.Store.MsUser" Multiplicity="1" />
+    <End Role="HeaderTransaction" Type="dWarneTSDatabaseModel.Store.HeaderTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MsUser">
+        <PropertyRef Name="Userid" />
+      </Principal>
+      <Dependent Role="HeaderTransaction">
+        <PropertyRef Name="Userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
